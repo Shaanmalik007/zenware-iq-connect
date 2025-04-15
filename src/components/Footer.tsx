@@ -1,4 +1,3 @@
-
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -11,6 +10,13 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
+            <div className="flex items-center mb-4">
+              <img 
+                src="/logo.png" 
+                alt="ZenwareIQ Logo" 
+                className="h-10 mr-3"
+              />
+            </div>
             <h3 className="text-xl font-bold mb-4">
               <span className="text-zenblue-light">Zenware</span>IQ
             </h3>

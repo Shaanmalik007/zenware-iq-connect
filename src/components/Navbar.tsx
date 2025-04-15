@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -19,8 +18,12 @@ const Navbar = () => {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container-custom py-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="text-2xl font-bold text-zenblue">
-            <span className="text-zenblue-dark">Zenware</span>IQ
+          <Link to="/" className="flex items-center text-2xl font-bold text-zenblue">
+            <img 
+              src="/logo.png" 
+              alt="ZenwareIQ Logo" 
+              className="h-10 mr-3"
+            />
           </Link>
 
           {/* Desktop Navigation */}
