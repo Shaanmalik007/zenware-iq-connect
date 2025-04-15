@@ -1,8 +1,16 @@
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+
+  useEffect(() => {
+    const logoImage = new Image();
+    logoImage.src = '/logo.png';
+    logoImage.onload = () => console.log('Footer logo loaded successfully');
+    logoImage.onerror = () => console.error('Footer logo failed to load');
+  }, []);
 
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">

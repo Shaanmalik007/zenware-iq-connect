@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const logoImage = new Image();
+    logoImage.src = '/logo.png';
+    logoImage.onload = () => console.log('Logo loaded successfully');
+    logoImage.onerror = () => console.error('Logo failed to load');
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
