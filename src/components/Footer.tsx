@@ -1,16 +1,9 @@
+
 import { Facebook, Twitter, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-
-  useEffect(() => {
-    const logoImage = new Image();
-    logoImage.src = '/logo.png';
-    logoImage.onload = () => console.log('Footer logo loaded successfully');
-    logoImage.onerror = () => console.error('Footer logo failed to load');
-  }, []);
 
   return (
     <footer className="bg-gray-900 text-white pt-16 pb-8">
@@ -18,13 +11,6 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center mb-4">
-              <img 
-                src="/logo.png" 
-                alt="ZenwareIQ Logo" 
-                className="h-10 mr-3"
-              />
-            </div>
             <h3 className="text-xl font-bold mb-4">
               <span className="text-zenblue-light">Zenware</span>IQ
             </h3>

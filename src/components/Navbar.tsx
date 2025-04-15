@@ -1,17 +1,11 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-
-  useEffect(() => {
-    const logoImage = new Image();
-    logoImage.src = '/logo.png';
-    logoImage.onload = () => console.log('Logo loaded successfully');
-    logoImage.onerror = () => console.error('Logo failed to load');
-  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -25,12 +19,8 @@ const Navbar = () => {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container-custom py-4">
         <div className="flex justify-between items-center">
-          <Link to="/" className="flex items-center text-2xl font-bold text-zenblue">
-            <img 
-              src="/logo.png" 
-              alt="ZenwareIQ Logo" 
-              className="h-10 mr-3"
-            />
+          <Link to="/" className="text-2xl font-bold text-zenblue">
+            <span className="text-zenblue-dark">Zenware</span>IQ
           </Link>
 
           {/* Desktop Navigation */}
