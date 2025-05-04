@@ -1,6 +1,7 @@
 
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { supabase } from "@/integrations/supabase/client";
 
 const ContactForm = () => {
   const { toast } = useToast();
@@ -21,25 +22,55 @@ const ContactForm = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    try {
+      // Submit form data to Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone || null,
+            company: formData.company || null,
+            message: formData.message,
+          }
+        ]);
+        
+      if (error) {
+        console.error('Error submitting form:', error);
+        toast({
+          title: "Error",
+          description: "There was a problem submitting your message. Please try again.",
+          variant: "destructive",
+        });
+      } else {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        // Reset form data after successful submission
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          company: '',
+          message: '',
+        });
+      }
+    } catch (err) {
+      console.error('Unexpected error:', err);
       toast({
-        title: "Message sent!",
-        description: "We'll get back to you as soon as possible.",
+        title: "Error",
+        description: "An unexpected error occurred. Please try again.",
+        variant: "destructive",
       });
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: '',
-      });
-    }, 1500);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
