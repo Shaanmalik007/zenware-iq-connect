@@ -1,7 +1,7 @@
-
 import Hero from '@/components/Hero';
 import ContactForm from '@/components/ContactForm';
 import { Mail, Phone, MapPin, Clock, MessageSquare } from 'lucide-react';
+import ChatButton from '@/components/ChatButton';
 
 const Contact = () => {
   return (
@@ -189,6 +189,9 @@ const Contact = () => {
           </div>
         </div>
       </section>
+
+      {/* Chat Button */}
+      <ChatButton />
     </div>
   );
 };

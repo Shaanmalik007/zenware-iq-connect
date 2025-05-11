@@ -39,6 +39,33 @@ export type Database = {
         }
         Relationships: []
       }
+      "Form Submission": {
+        Row: {
+          "Company Name": string | null
+          created_at: string
+          "Full Name": string | null
+          id: number
+          Message: string | null
+          "Phone Number": number | null
+        }
+        Insert: {
+          "Company Name"?: string | null
+          created_at?: string
+          "Full Name"?: string | null
+          id?: number
+          Message?: string | null
+          "Phone Number"?: number | null
+        }
+        Update: {
+          "Company Name"?: string | null
+          created_at?: string
+          "Full Name"?: string | null
+          id?: number
+          Message?: string | null
+          "Phone Number"?: number | null
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
